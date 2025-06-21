@@ -1,14 +1,26 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import  axios  from "axios";
 const Form =()=>{
     const [form,setForm]=useState({name:'',email:'',dob:''}); // to store name ,emi,dob . how we acess? we use like form.name , form.email
     const [showform,setShowForm]=useState(true); // to show or hide form 
     const navigate =useNavigate();
+    const location=useLocation();
+    const {id}=useParams(); //get the url id (if it navigate through edit/:id)
+    const editUser=location.state // get the entire user details (when in edit mode)
+    
+    //to pre-fill the all details when we edit
+    useEffect(()=>{
+        if(editUser){
+            setForm(editUser)
+        }
+    },[editUser])
 
+    //to get the user entered
     const handleChange =(e)=>{
     setForm({...form,[e.target.name]:e.target.value}) // copy the values to form , eg name: alagu copy to form other email,DOB remain same 
     }
+
     //submit handling function
     const handleSubmit= async(e)=>{
         e.preventDefault();
@@ -18,8 +30,14 @@ const Form =()=>{
             alert('pls enter all fields'); //if someone miss then it will show alert
             return;
     }
-
+// if id have then update the data to DB else save the data to DB
     try{
+        if(id){
+            await axios.put(`http://localhost:9000/users/${id}`,{name,email,dob:new Date(dob)})
+            alert("User Upadated");
+            navigate('/userdetails')
+        }
+        else{
         await axios.post('http://localhost:9000/users',{ name,email,dob:new Date(dob),}) // post tha data to DB 
 
     alert('User Added Sucessfully') //after succefull completion it show msg
@@ -30,12 +48,13 @@ const Form =()=>{
     }
     else {
         setShowForm(false) // to hide the form 
-    }}
+    }}}
 
     catch(e){
         console.log(e);
         alert('Something went wrong while saving !')
     }}
+
 
     if(!showform){
         return(

@@ -3,33 +3,38 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import Form from './Form'
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useNavigate } from 'react-router-dom'
 import UserDetails from './Userdetails'
 
 function App() {
   const [count, setCount] = useState(0)
+  const navigate =useNavigate();
+
 
   return (
     <>
+    
     <div className='bg-sky-400 grid grid-cols-2 m-0'>
 
       {/* User form */}
-      <div className='px-5 py-2 flex justify-center border border-white'>
+      <div className='px-5 py-2 flex justify-center border border-white' onClick={()=>navigate('/')}>
         <h1 className='font-bold text-3xl text-white'>User Form </h1>
         
           </div>
         
 
 {/* User details */}
-<div className='px-5 py-2 border border-white flex justify-center'>
+<div className='px-5 py-2 border border-white flex justify-center' onClick={()=>navigate('/userdetails')}>
   <h1 className='font-bold text-3xl text-white' > User Details</h1>
 
 </div>
 </div>
-<Routes>
+  <Routes>
   <Route path='/' element={<Form/>}/>
+   <Route path='/edit/:id' element={<Form/>}/>
   <Route path='/userdetails' element={<UserDetails/>}/>
 </Routes>
+
 
       
     </>
