@@ -47,54 +47,47 @@ const Form =()=>{
 
     }
     else {
-        setShowForm(false) // to hide the form 
+        navigate('/')// navigate to home
     }}}
 
     catch(e){
         console.log(e);
-        alert('Something went wrong while saving !')
+        alert('Something went wrong while saving ! or check Your email  ')
     }}
 
 
-    if(!showform){
-        return(
-            <>
-            <div className="flex justify-center"> 
-                <button className="bg-sky-600 p-5 text-white rounded-lg " onClick={()=>navigate('/userdetails')}>View UserDetails</button>
-            </div>
-            </>
-        )
-
-    }
+  
     console.log(form)
 
     return(
         <>
-        <div className=" flex justify-center items-center ">
-            <form className="border border-lg border-sky-500 p-3 rounded-md" onSubmit={handleSubmit}> 
-                <h1 className="font-bold text-center mb-5">ADD USERS</h1>
+
+        <div className=" flex flex-col justify-center items-center min-h-[90vh] bg-white px-4 ">
+          
+            <form className="w-full  max-w-xl border border-lg border-sky-500 p-8 rounded-md shadow-lg bg-white" onSubmit={handleSubmit}> 
+                <h1 className="font-bold text-3xl text-center mb-4 text-blue-800">{id?"Edit User": "Add User"}</h1>
             {/* row 1 */}
-            <div className="mb-4">
-                 <label className="text-sky-900 p-1"> Name: </label>
-                    <input type="text"name="name" value={form.name} className="border" onChange={handleChange}/>
+            <div className="mb-6">
+                 <label className=" block text-sky-900 mb-2 font-medium"> Name: </label>
+                    <input type="text"name="name" value={form.name}    placeholder="Enter name" className="outline-none p-3 w-full bg-blue-100 rounded-lg focus:ring-2 focus:ring-blue-500 " onChange={handleChange}/>
                 
                 </div>    
 
             {/* row 2 */}
-            <div className="mb-4">
-                 <label className="text-sky-900 p-1"> Email: </label>
-                    <input type="email" name="email" value={form.email} className="border ms-1" onChange={handleChange} />
+            <div className="mb-6">
+                 <label className="block text-sky-900 mb-2 font-medium"> Email: </label>
+                    <input type="email" name="email" value={form.email}    placeholder="Enter your email" className="outline-none p-3 w-full bg-blue-100 rounded-lg focus:ring-2 focus:ring-blue-500 " onChange={handleChange} />
                 
                 </div>    
 
               {/* row 3 */}
-            <div className="mb-4">
-                 <label className="text-sky-900 p-2">DOB:  </label>
-                    <input type="date"  name="dob" value={form.dob} className="border" onChange={handleChange} />
+            <div className="mb-8">
+                 <label className="block text-sky-900 mb-2 font-medium">DOB:  </label>
+                    <input type="date"  name="dob" value={form.dob}     className="outline-none p-3 w-full bg-blue-100 rounded-lg focus:ring-2 focus:ring-blue-500 " onChange={handleChange} />
                 
                 </div>  
             <div className="flex justify-center">
-               <button className="btn bg-sky-600 text-white px-3 py-2 text-center rounded" type="submit">Submit</button>
+               <button className="w-full bg-blue-400 hover:bg-blue-500 text-white px-5 py-3 text-center rounded cursor-pointer" type="submit">{id? "Update":"Submit"}</button>
            
             </div>
 
@@ -102,9 +95,14 @@ const Form =()=>{
 
 
         </form>
-
+           
 
         </div>
+           <div className="flex justify-start items-start bg-white mt-5">
+                        <button className="bg-blue-400 hover:bg-blue-500 text-white px-5 py-2 shadow rounded mx-4  " onClick={()=>navigate('/')}> Back</button>
+            </div>
+
+
   
         </>
     )

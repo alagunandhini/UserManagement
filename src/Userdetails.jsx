@@ -30,11 +30,15 @@ const UserDetails=()=>{
     }
     return(
         <>
-        <div>
-            <h1 className="font-bold text-2xl text-center mt-5 mb-10">Users Table</h1>
+       
+            <h1 className="font-extrabold text-2xl text-center  mb-3  text-blue-900 rounded-full mt-3">Users details</h1>
+              <p className="text-gray-700 mb-10 text-center">
+          Edit ,delete and manage your users easily.
+        </p>
+
             <table className="w-full border mb-10 ">
                 <thead> 
-                    <tr className="bg-sky-300 text-white ">
+                    <tr className="bg-blue-400 text-white ">
                         <th className="border p-3">Id</th>
                          <th className="border">Name </th>
                           <th className="border">email</th>
@@ -51,7 +55,7 @@ const UserDetails=()=>{
                         <th className="border p-4">{id+1}</th>
                         <th className="border">{user.name}</th>
                          <th className="border">{user.email}</th>
-                          <th className="border">{user.dob}</th>
+                          <th className="border">{new Date(user.dob).toLocaleDateString()}</th>
                           <th className="border"><button className=" text-sky-500 p-2 rounded-full shadow"
                                       onClick={()=>navigate(`/edit/${user.id}`,{state:user})} >✔ </button></th>
 
@@ -69,12 +73,19 @@ const UserDetails=()=>{
 
 
             </table>
-        </div>
+       
 
-<div className=" flex justify-center">
-    <button className="bg-sky-500 p-3 rounded-full w-70 text-white text-lg font-bold" onClick={()=> navigate('/')}> Add User</button>
+<div className=" flex justify-center gap-5">
+    <button className="bg-blue-400 py-3 px-5 rounded text-white text-md font-semibold" onClick={()=> navigate('/form')}> Add User</button>
+      <button className="bg-blue-400 text-white px-9 rounded shadow font-semibold " onClick={()=>navigate('/')}> Back</button>
 
 </div>
+
+
+
+      
+       
+      
         
 
         </>
