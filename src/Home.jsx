@@ -19,8 +19,8 @@ const Home =()=>{
       </div>
 
       <div className='flex justify-center items-center '>
-        <button className='bg-blue-400 text-white p-3 rounded font-semibold m-7' onClick={()=> navigate('/form')}> Add Users </button>
-        <button className='bg-blue-400 text-white p-3 rounded font-semibold m-7' onClick={()=> navigate('/userdetails')}> View user </button>
+        <button className='bg-blue-400 hover:bg-blue-500  text-white p-3 rounded font-semibold m-7' onClick={()=> navigate('/form')}> Add Users </button>
+        <button className='bg-blue-400 hover:bg-blue-500  text-white p-3 rounded font-semibold m-7' onClick={()=> navigate('/userdetails')}> View user </button>
         
       </div>
 

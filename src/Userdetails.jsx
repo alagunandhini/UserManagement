@@ -76,8 +76,8 @@ const UserDetails=()=>{
        
 
 <div className=" flex justify-center gap-5">
-    <button className="bg-blue-400 py-3 px-5 rounded text-white text-md font-semibold" onClick={()=> navigate('/form')}> Add User</button>
-      <button className="bg-blue-400 text-white px-9 rounded shadow font-semibold " onClick={()=>navigate('/')}> Back</button>
+    <button className="bg-blue-400 hover:bg-blue-500  py-3 px-5 rounded text-white text-md font-semibold" onClick={()=> navigate('/form')}> Add User</button>
+      <button className="bg-blue-400 hover:bg-blue-500 text-white px-9 rounded shadow font-semibold " onClick={()=>navigate('/')}> Back</button>
 
 </div>
 
