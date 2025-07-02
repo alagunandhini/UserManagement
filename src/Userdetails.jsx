@@ -8,7 +8,7 @@ const UserDetails=()=>{
     const navigate=useNavigate(); // for navigation
    // to fetxh all user data when page loads
     useEffect(()=>{
-        axios.get("http://localhost:9000/users")
+        axios.get("https://usermanagement-5.onrender.com/users")
         .then((res)=>{
             setUsers(res.data);
         })
@@ -23,7 +23,7 @@ const UserDetails=()=>{
     const handleDelete = async (id)=>{
         const del=window.confirm("are you sure to delete?")
         if(del){
-            await axios.delete(`http://localhost:9000/users/${id}`);
+            await axios.delete(`https://usermanagement-5.onrender.com/users/${id}`);
             window.location.reload();
         }
 

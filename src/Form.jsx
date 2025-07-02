@@ -33,12 +33,12 @@ const Form =()=>{
 // if id have then update the data to DB else save the data to DB
     try{
         if(id){
-            await axios.put(`http://localhost:9000/users/${id}`,{name,email,dob:new Date(dob)})
+            await axios.put(`https://usermanagement-5.onrender.com/users/${id}`,{name,email,dob:new Date(dob)})
             alert("User Upadated");
             navigate('/userdetails')
         }
         else{
-        await axios.post('http://localhost:9000/users',{ name,email,dob:new Date(dob),}) // post tha data to DB 
+        await axios.post('https://usermanagement-5.onrender.com/users',{ name,email,dob:new Date(dob),}) // post tha data to DB 
 
     alert('User Added Sucessfully') //after succefull completion it show msg
     const addMore=window.confirm("want to add more Users?")
